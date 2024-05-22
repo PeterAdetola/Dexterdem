@@ -6,7 +6,7 @@
             <div class="row newsletter-inner gray-bg align-items-center">
                 <div class="col-xl-7 col-lg-7">
                     <div class="section-title">
-                        <h2>Stay Up-to-date <br> with Archipix <span><i class="las la-arrow-right"></i></span> </h2>
+                        <h2>Stay Up-to-date <br> with Dexterdem &amp; Associates <span><i class="las la-arrow-right"></i></span> </h2>
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5">
@@ -43,7 +43,7 @@
                             London, UK 265
                         </p>
                         <div class="company-email">
-                            <a href="#">info@archipix.com</a>
+                            <a href="#">info@dexterdem&associates.com</a>
                         </div>
                         <div class="phone-number">
                             <p>+18-4675826</p>
@@ -87,7 +87,7 @@
         <div class="container">
             <div class="row justify-content-center align-items-center justify-content-center">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <p class="copyright-line">© 2024 Archipix. All rights reserved.</p>
+                    <p class="copyright-line">© 2024 <a style="color: white; font-size: 1em" onclick="return false" ondblclick="location=this.href" href="{{ url('login') }}">Dexterdem &amp; Associates.</a> All rights reserved.</p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 text-md-end">
                     <p class="privacy">Privacy Policy | Terms &amp; Conditions</p>

@@ -90,13 +90,13 @@
         </div>
         <div class="logo-side mb-30">
             <div class="logo">
-                <a href="index-3.html" class="logo">Archipix.</a>
+                <a href="index-3.html" class="logo"><img src="{{ asset('frontend/assets/img/wordmark.png') }}" style="height: 2.5em;" alt="Dexterdem & Associates" /></a>
             </div>
         </div>
         <div class="side-info">
             <div class="contact-list mb-40">
                 <!-- <h4>About</h4> -->
-                <p>Welcome to Archipix, a full service architecture and interior design firm. We specialize in creating beautiful, functional spaces that reflect your unique style.</p>
+                <p>Welcome to Dexterdem &amp Associates, a full service architecture and interior design firm. We specialize in creating beautiful, functional spaces that reflect your unique style.</p>
                 <img src="{{ asset('frontend/assets/img/offcanvas-img.jpg') }}" alt="">
 
                 <div class="mt-30 mb-30">
