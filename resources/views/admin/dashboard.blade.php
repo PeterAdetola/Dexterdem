@@ -40,7 +40,7 @@
     $noHeading = empty($heroSection->heading)
     @endphp
     @if($noHeading)
-           <h3 class="center">
+           <h5 class="center">
             <div class="collection" style=" padding: 0.5em;">
                                 Transform your<br>
                   Vision into Reality<br>
@@ -50,9 +50,9 @@
                 </a>
               </div>
           </div>
-        </h3>
+        </h5>
       @else
-        <h3 class="center">
+        <h5 class="center">
           <div class="collection" style=" padding: 0.5em;">
                                 {!! $heroSection->heading !!}<br>
               <div class="row center">
@@ -61,7 +61,7 @@
                 </a>
               </div>
           </div>
-        </h3>
+        </h5>
       @endif
 
     @include('admin.hero.hero_heading-modal')

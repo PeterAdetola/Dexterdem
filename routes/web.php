@@ -35,16 +35,7 @@ Route::middleware('auth')->group(function () {
 // --------------| Hero Routes |----------------------------------------
 Route::controller(HeroController::class)->group(function () 
 {
-    // Route::get('/', 'Intropage')->name('intro');
-    // Route::post('/save/hero', 'SaveHero')->name('save.hero');
-    Route::patch('/update/hero', 'UpdateHero')->name('update.hero');
-
-    // Route::get('/edit/slide/{id}', 'EditSlide')->name('edit.slide');
-    Route::post('/delete/image/{id}', 'DeleteImage')->name('delete.image');
-    Route::get('/view/images', 'ViewImages')->name('view.images');
-    Route::post('/sort/slide', 'SortImage')->name('sort.slide');
-    Route::post('/update/image', 'UpdateImage')->name('update.image');
-    Route::post('/store/image', 'SaveSlide')->name('save.image');    
+    Route::patch('/update/hero', 'UpdateHero')->name('update.hero'); 
 });
 
 
