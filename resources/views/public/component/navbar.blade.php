@@ -11,6 +11,7 @@
                         <div class="main-menu d-none d-lg-block">
                             <ul>
                                 <li class="active"><a class="navlink" href="#">Home</a></li>                                
+                                <li><a class="navlink" href="#">About</a></li>                                
                                 <li><a class="navlink" href="#">Services</a></li>                                
 
                                 <li><a class="navlink" href="#">Project</a>

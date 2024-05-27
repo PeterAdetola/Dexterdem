@@ -62,15 +62,42 @@ if (!function_exists('getUserFisrtName')) {
      return $firstName;
     }
 }
-// Get slides
-if (!function_exists('getSlides')) {
-    function getSlides()
-    {
-     $slides = App\Models\HeroSection::all()->sortBy('order');
+// Get slides 
+// if (!function_exists('getSlides')) {
+//     function getSlides()
+//     {
+//      $slides = App\Models\HeroSection::all()->sortBy('order');
      
-     return $slides;
+//      return $slides; 
+//     }
+// }
+// Get Hero Heading 
+if (!function_exists('getHeroSection')) {
+    function getHeroSection()
+    {
+     $heroSection = App\Models\HeroSection::first();
+     
+     return $heroSection;
     }
-}
+ }
+// // Get Hero Summary 
+// if (!function_exists('getHeroSummary')) {
+//     function getHeroSummary()
+//     {
+//      $heroSummary = App\Models\HeroSection::all();
+     
+//      return $heroSummary;
+//     }
+// }
+// // Get Hero Summary 
+// if (!function_exists('getTagline')) {
+//     function getTagline()
+//     {
+//      $heroSummary = App\Models\HeroSection::all();
+     
+//      return $heroSummary;
+//     }
+// }
 // Get About summary
 if (!function_exists('getAboutSummary')) {
     function getAboutSummary()
