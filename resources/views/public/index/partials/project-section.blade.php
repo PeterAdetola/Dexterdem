@@ -1,5 +1,56 @@
-
-    <!-- Project Section  -->
+@php
+           
+$projects = getProjects()->sortBy('created_at');
+$services = getServicesProj();
+@endphp
+@if (count($projects) > 0)
+    <div id="project-3" class="project-section section-padding pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h2>Our Featured Work</h2>
+                </div>
+            </div>
+            <div class="row">
+                <nav>
+                    <div class="nav project-list" role="tablist">
+    @foreach($services as $service)                   
+                        <button class="nav-link {{$service->order == 1 ? 'active' : ''}}" id="service{{ $service->id }}-tab" data-bs-toggle="tab" data-bs-target="#service{{ $service->id }}" type="button" role="tab" aria-controls="service{{ $service->id }}" aria-selected="false">{{ $service->name }}</button>
+    @endforeach
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">  
+   @foreach($services as $service)                 
+                    <div class="tab-pane fade {{$service->order == 1 ? 'show active' : ''}}" id="service{{ $service->id }}" role="tabpanel" aria-labelledby="service{{ $service->id }}-tab" tabindex="0">
+                        <div class="row">
+        @php  $i = 1; @endphp
+        @foreach($projects as $project) 
+        @if($project->category->name == $service->name)
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-12">                                
+                                <div class="featured-work-wrapper" data-background="{{ $project->image }}" style="cursor: pointer;" onclick="window.location='project-details.html';">                                    
+                                    <div class="featured-work-inner">
+                                        <div class="fetured-work-bg">                                              
+                                        </div>
+                                        <a href="project-details.html" class="details-link">
+                                            <i class="las la-arrow-right"></i>
+                                        </a>
+                                        <div class="featured-work-info">
+                                            <h2>0{{$i++}}</h2>
+                                            <h4>{{ $project->name }}</h4>
+                                        </div>
+                                    </div>                                                                        
+                                </div>                                
+                            </div>
+        @endif
+        @endforeach
+                        </div>
+                    </div>
+    @endforeach                               
+                    </div>
+            </div>
+        </div>
+    </div>
+@else   <!-- Project Section  -->
     <div id="project-3" class="project-section section-padding pt-100 pb-100">
         <div class="container">
             <div class="row">
@@ -48,7 +99,7 @@
                                             <h2>02</h2>
                                             <h4>Peninsula Villa</h4>
                                         </div>
-                                    </div>                                                                        
+                                    </div>                                                                      
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-6 col-12">
@@ -319,3 +370,4 @@
             </div>
         </div>
     </div>
+@endif 

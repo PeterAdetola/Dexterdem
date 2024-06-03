@@ -80,24 +80,6 @@ if (!function_exists('getHeroSection')) {
      return $heroSection;
     }
  }
-// // Get Hero Summary 
-// if (!function_exists('getHeroSummary')) {
-//     function getHeroSummary()
-//     {
-//      $heroSummary = App\Models\HeroSection::all();
-     
-//      return $heroSummary;
-//     }
-// }
-// // Get Hero Summary 
-// if (!function_exists('getTagline')) {
-//     function getTagline()
-//     {
-//      $heroSummary = App\Models\HeroSection::all();
-     
-//      return $heroSummary;
-//     }
-// }
 // Get About summary
 if (!function_exists('getAboutSummary')) {
     function getAboutSummary()
@@ -108,14 +90,23 @@ if (!function_exists('getAboutSummary')) {
     }
 }
 // Get Services
-// if (!function_exists('getServices')) {
-//     function getServices()
-//     {
-//      $services = App\Models\Service::all();
+if (!function_exists('getServices')) {
+    function getServices()
+    {
+     $services = App\Models\Service::all();
      
-//      return $services;
-//     }
-// }
+     return $services;
+    }
+}
+// Get Services with project
+if (!function_exists('getServicesProj')) {
+    function getServicesProj()
+    {
+     $services = App\Models\Service::withProjects()->orderBy('order')->get();
+     
+     return $services;
+    }
+}
 // Get Team Members
 if (!function_exists('getMembers')) {
     function getMembers()

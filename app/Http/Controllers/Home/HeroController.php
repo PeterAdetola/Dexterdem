@@ -34,11 +34,13 @@ class HeroController extends Controller
 
                 if($img1){
 
+                    $width = 1302;
+                    $height = 1080;
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$img1->getClientOriginalExtension();
                     $img = $manager->read($img1);
-                    $sizedImg = $img->resize(1302, 1080);
-                    $sizedImg->save('uploads/hero/'.$name_gen);
+                    $img = $img->resize($width, $height);
+                    $img->save('uploads/hero/'.$name_gen);
                     $save_url = 'uploads/hero/'.$name_gen;
 
                     $heroSection = HeroSection::create([
@@ -54,11 +56,13 @@ class HeroController extends Controller
 
                 } else {
 
+                    $width = 526;
+                    $height = 408;
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$img2->getClientOriginalExtension();
                     $img = $manager->read($img2);
-                    $sizedImg = $img->resize(526, 408);
-                    $sizedImg->save('uploads/hero/'.$name_gen);
+                    $img = $img->resize($width, $height);
+                    $img->save('uploads/hero/'.$name_gen);
                     $save_url = 'uploads/hero/'.$name_gen;
 
                     $heroSection = HeroSection::create([
@@ -112,12 +116,14 @@ class HeroController extends Controller
                         }
                     }
 
+                    $width = 1302;
+                    $height = 1080;
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$img1->getClientOriginalExtension();
                     $img = $manager->read($img1);
-                    $sizedImg = $img->resize(1302, 1080);
+                    $img = $img->resize($width, $height);
                     // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-                    $sizedImg->save('uploads/hero/'.$name_gen);
+                    $img->save('uploads/hero/'.$name_gen);
                     $save_url = 'uploads/hero/'.$name_gen;
 
                     $heroSection->update([
@@ -142,13 +148,14 @@ class HeroController extends Controller
                         Log::error("Error deleting old image: " . $e->getMessage());            
                         }
                     }
-
+                    $width = 526;
+                    $height = 408;
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$img2->getClientOriginalExtension();
                     $img = $manager->read($img2);
-                    $sizedImg = $img->resize(526, 408);
+                    $img = $img->resize($width, $height);
                     // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-                    $sizedImg->save('uploads/hero/'.$name_gen);
+                    $img->save('uploads/hero/'.$name_gen);
                     $save_url = 'uploads/hero/'.$name_gen;
 
                     $heroSection->update([

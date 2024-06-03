@@ -1,5 +1,47 @@
 
-
+@php
+$services = getServices()->sortBy('order');
+            $i = $j = 1;
+@endphp
+@if (count($services) > 0)
+    <!-- Service Section  -->
+    <div id="service-3" class="service-section pb-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12 text-end">
+                    <div class="section-title">
+                        <h2>Our Service</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="cp-custom-accordion">
+                        <div class="accordions" id="accordionExample">  
+  @foreach($services as $service)   
+  @php $no = $j++   @endphp                   
+                            <div class="accordion-items">
+                              <h2 class="accordion-header" id="heading{{$no}}">
+                                <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$no}}" aria-expanded="true" aria-controls="collapse{{$no}}">
+                                    <span>0{{$i++}}</span>
+                                    {{ $service->name }}                                   
+                                </button>
+                              </h2>
+                              <div id="collapse{{$no}}" class="accordion-collapse collapse {{$no == 1 ? 'show' : ''}}" aria-labelledby="heading{{$no}}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <img src="{{ $service->image }}" alt="">
+                                    <p>{{ $service->summary }}</p>
+                                </div>
+                              </div>
+                            </div>
+    @endforeach
+                          </div>
+                    </div>                                        
+                </div>
+            </div>
+        </div>
+    </div>
+@else
     <!-- Service Section  -->
     <div id="service-3" class="service-section pb-50">
         <div class="container">
@@ -104,3 +146,4 @@
             </div>
         </div>
     </div>
+@endif

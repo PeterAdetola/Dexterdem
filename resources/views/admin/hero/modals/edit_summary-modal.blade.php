@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <textarea name="summary" id="myeditorinstance" class="materialize-textarea" >{{ $heroSection->summary }}</textarea>
+        <textarea name="summary" id="myeditorinstance" class="materialize-textarea"  >{{ $heroSection->summary }}</textarea>
       </div>
     </div>
 

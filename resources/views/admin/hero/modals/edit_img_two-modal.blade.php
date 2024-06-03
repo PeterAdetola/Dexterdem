@@ -21,17 +21,22 @@
             <div class="row">
               <div class="col s12 m12 mb-2">
                   <input name="imageTwo" data-default-file="{{ url($heroSection->imageTwo) }}"  type="file" id="input-file-now-custom-2" class="dropify" data-height='200' />  
+                  <small class="errorTxt3  grey-text">Upload image in JPG (526 x 408)</small>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <select name="captionTwo" class="select2" value="{{ $heroSection->caption }}">
-                    <option value="square">Square</option>
-                    <option value="rectangle">Rectangle</option>
-                    <option value="rombo">Rombo</option>
-                    <option value="romboid">Romboid</option>
-                    <option value="trapeze">Trapeze</option>
-                    <option value="traible">Triangle</option>
-                    <option value="polygon">Polygon</option>
+                  <select name="captionTwo" class="select2" value="{{ $heroSection->captionTwo }}">
+  @php
+    $services = getServices();
+  @endphp
+  @if (count($services) > 0)
+                  <option value="{{ $heroSection->captionTwo }}">{{ $heroSection->captionTwo }}</option>
+  @foreach($services as $service) 
+                    <option value="{{ $service->name }}">{{ $service->name }}</option>
+  @endforeach
+  @else
+                    <option value="">No entry</option>
+  @endif
                   </select>
                 </div>
                 <div class="col s12">   

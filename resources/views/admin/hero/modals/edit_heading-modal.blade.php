@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class="input-field col s12">
-        <textarea name="heading" id="myeditorinstance" class="materialize-textarea" >{!! $heroSection->heading !!}</textarea>
+        <textarea name="heading" id="myeditorinstance" class="materialize-textarea"  >{!! $heroSection->heading !!}</textarea>
       </div>
     </div>
 
