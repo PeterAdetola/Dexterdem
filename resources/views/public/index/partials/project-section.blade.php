@@ -26,11 +26,11 @@ $services = getServicesProj();
         @foreach($projects as $project) 
         @if($project->cat->name == $service->name)
                             <div class="col-xl-4 col-lg-4 col-md-6 col-12">                                
-                                <div class="featured-work-wrapper" data-background="{{ $project->image }}" style="cursor: pointer;" onclick="window.location='project-details.html';">                                    
+                                <div class="featured-work-wrapper" data-background="{{ $project->image }}" style="cursor: pointer;" onclick="window.location='{{ $project->details ? route('project_detailed.page', $project->id):'#!'   }}';">                                    
                                     <div class="featured-work-inner">
                                         <div class="fetured-work-bg">                                              
                                         </div>
-                                        <a href="{{ route('project_detailed.page', $project->id ) }}" class="details-link">
+                                        <a href="{{ $project->details ? route('project_detailed.page' , $project->id ) :'#!' }}" class="details-link">
                                             <i class="las la-arrow-right"></i>
                                         </a>
                                         <div class="featured-work-info">
