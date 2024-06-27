@@ -155,6 +155,7 @@ $pageTitle = 'Create Project';
     <div id="simpleList" class="preview-container"></div>
     
             <div class="col s12 m12">
+                  <small class="errorTxt3  grey-text">Upload images in JPG (600 x 600)</small> 
               <div class="file-field input-field ml-2">
                 <div class="btn">
                 <span>File</span>

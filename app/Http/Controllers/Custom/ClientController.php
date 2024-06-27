@@ -41,12 +41,14 @@ class ClientController extends Controller
         if($image) {
                     $width = 121;
                     $height = 60;
+                    $location = 'uploads/clients/';
+                    
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                     $img = $manager->read($image);
                     $img = $img->resize($width, $height);
-            $img->save('uploads/clients/'.$name_gen);
-            $save_url = 'uploads/clients/'.$name_gen;
+            $img->save($location.$name_gen);
+            $save_url = $location.$name_gen;
         }
 
             Client::insert([
@@ -99,12 +101,14 @@ class ClientController extends Controller
             
                     $width = 121;
                     $height = 60;
+                    $location = 'uploads/clients/';
+                    
                     $manager = new ImageManager(new Driver());
                     $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                     $img = $manager->read($image);
                     $img = $img->resize($width, $height);
-            $img->save('uploads/clients/'.$name_gen);
-            $save_url = 'uploads/clients/'.$name_gen;
+            $img->save($location.$name_gen);
+            $save_url = $location.$name_gen;
 
 
             Client::findOrFail($id)->update([

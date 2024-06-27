@@ -48,11 +48,6 @@
                     @enderror
                   </div>   
               
-              <!-- <div class="col s12 display-flex justify-content-end mt-3">
-                <button type="submit" class="btn-large" onclick="ShowPreloader()">
-                  Save Entry</button>
-                <a href="{{ route('view.slides') }}" class="btn-large btn-flat modal-close">Cancel</a>
-              </div>   -->
 
               <div class="col s12 mt-7">   
                 <button  id="deleteTestimonialBtn{{ $testimonial->id }}" type="submit" class="modal-action waves-effect red waves-red btn-large">Yes, Delete!</button>

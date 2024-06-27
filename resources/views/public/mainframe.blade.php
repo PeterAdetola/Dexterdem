@@ -54,6 +54,7 @@
         @include('public.component.navbar')
 
          <div id="smooth-content">
+        @include('public.component.breadcrumb')
             <!-- Content -->
                   @yield('content')
 
@@ -90,25 +91,61 @@
         </div>
         <div class="logo-side mb-30">
             <div class="logo">
-                <a href="index-3.html" class="logo"><img src="{{ asset('frontend/assets/img/wordmark.png') }}" style="height: 2.5em;" alt="Dexterdem & Associates" /></a>
+                <a href="{{ url('/') }}" class="logo"><img src="{{ asset('frontend/assets/img/wordmark.png') }}" style="height: 2.5em;" alt="Dexterdem & Associates" /></a>
             </div>
         </div>
+        @php
+            $separators = ",|-|_|\n";
+            $contact = getContact()->first();
+            $smedia = getSmedia();
+        @endphp
         <div class="side-info">
-            <div class="contact-list mb-40">
-                <!-- <h4>About</h4> -->
-                <p>Welcome to Dexterdem &amp Associates, a full service architecture and interior design firm. We specialize in creating beautiful, functional spaces that reflect your unique style.</p>
-                <img src="{{ asset('frontend/assets/img/offcanvas-img.jpg') }}" alt="">
+            <div class="contact-list">
+        @if(!empty($contact->email))
+                <h4>Email</h4>
+            @php
+                $email = $contact->email;
+                $emails = preg_split("#(?<=$separators)#", $email); 
+            @endphp
+            
+                            @foreach($emails as $email)
+                            <a style="font-size: 1em; color: white;" href="mailto:{{ strip_tags($email) }}">{{ strip_tags($email) }}</a>
+                            @endforeach
+            @else
+                            <a style="font-size: 1em; color: white;" href="">user@email.com</a>
+
+            @endif
+        @if(!empty($contact->phone))
+            @php
+                $phone = $contact->phone;
+                $phones = preg_split("#(?<=$separators)#", $phone); 
+            @endphp
+            <hr class="mt-3 mb-3">
+                <h4>Phone</h4>
+            @foreach($phones as $phone)
+                            <a style="font-size: 1em; color: white;" href="tel:+{{ preg_replace('/\D/', '', $phone) }}">{{ strip_tags($phone) }}</a><br>
+            @endforeach
+        @else
+                            <p style="font-size: 1em; color: white;">+234 XXX XXX XXXX</p>
+        @endif
 
                 <div class="mt-30 mb-30">
                     <a href="contact.html" class="white-btn">Get In Touch</a>
                 </div>
             </div>
+        @if(count($smedia) > 0)
             <div class="social-area-wrap">
-                <a href="#"><i class="lab la-facebook-f"></i></a>                                    
-                <a href="#"><i class="lab la-instagram"></i></a>
-                <a href="#"><i class="lab la-linkedin-in"></i></a>
-                <a href="#"><i class="lab la-skype"></i></a>                
+            @foreach($smedia as $smedia)
+                @if($smedia->name === 'Facebook')
+                <a href="{{ $smedia->link }}"><i class="lab la-facebook-f"></i></a> 
+                @elseif($smedia->name === 'Instagram')                                   
+                <a href="{{ $smedia->link }}"><i class="lab la-instagram"></i></a>
+                @elseif($smedia->name === 'LinkedIn')
+                <a href="{{ $smedia->link }}"><i class="lab la-linkedin-in"></i></a>
+                @endif
+            @endforeach                
             </div>
+        @endif
         </div>
     </div>
 

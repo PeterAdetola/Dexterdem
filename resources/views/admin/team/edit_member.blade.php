@@ -103,12 +103,7 @@ $pageTitle = 'Edit Member';
                     <small class="errorTxt3  red-text">{{ $message }}*</small>
                     @enderror
                   </div> 
-              
-              <!-- <div class="col s12 display-flex justify-content-end mt-3">
-                <button type="submit" class="btn-large" onclick="ShowPreloader()">
-                  Save Entry</button>
-                <a href="{{ route('view.slides') }}" class="btn-large btn-flat modal-close">Cancel</a>
-              </div>   -->     
+                  
 
                 </div>  
               </div>

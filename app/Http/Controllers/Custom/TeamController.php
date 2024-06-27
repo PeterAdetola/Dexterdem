@@ -5,11 +5,52 @@ namespace App\Http\Controllers\Custom;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use App\Models\TeamIntro;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
 class TeamController extends Controller
 {
+
+    public function ViewTeamIntro()
+    {
+
+        $intro = TeamIntro::all()->first();
+
+        return view('admin.team.team_intro', compact('intro'));
+
+    } //End Method
+
+    /**
+     * Save Service.
+     */
+    public function SaveTeamIntro(Request $request)
+    {
+        $teamIntro = TeamIntro::first();
+
+        if($teamIntro){
+
+            $teamIntro->update([
+                'heading' => $request->heading,
+                'intro' => $request->intro,
+            ]);
+
+        } else {
+
+            TeamIntro::insert([
+                'heading' => $request->heading,
+                'intro' => $request->intro,
+            ]);
+            
+        }
+
+        $notification = array(
+            'message' => 'Intro saved',
+        );
+
+        return redirect()->back()->with($notification);
+
+    }  //End Method
 
     public function ViewMembers()
     {
@@ -18,7 +59,7 @@ class TeamController extends Controller
 
         return view('admin.team.view_members', compact('members'));
 
-    } //End Method
+    }
 
     /**
      * Save Service.
@@ -36,18 +77,21 @@ class TeamController extends Controller
             'image.required' => 'Image in JPG/PNG is required',
         ]);
 
-        $member_no = count(TeamMember::all());
-        $order = $member_no + 1;
+        $max_no = TeamMember::max('order');
+        $order = $max_no + 1;
         $image = $request->file('image');
 
         if($image) {
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $sizedImg = $img->resize(600, 600);
-            // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $sizedImg->save('uploads/team/'.$name_gen);
-            $save_url = 'uploads/team/'.$name_gen;
+                    $width = 440;
+                    $height = 440;
+                    $location = 'uploads/team/';
+                    
+                    $manager = new ImageManager(new Driver());
+                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    $img = $manager->read($image);
+                    $img = $img->resize($width, $height);
+            $img->save($location.$name_gen);
+            $save_url = $location.$name_gen;
         }
 
             TeamMember::insert([
@@ -119,14 +163,16 @@ class TeamController extends Controller
         } catch (Exception $e) {
         Log::error("Error deleting old image: " . $e->getMessage());            
         }
-
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $sizedImg = $img->resize(200, 140);
-            // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $sizedImg->save('uploads/team/'.$name_gen);
-            $save_url = 'uploads/team/'.$name_gen;
+                    $width = 440;
+                    $height = 440;
+                    $location = 'uploads/team/';
+                    
+                    $manager = new ImageManager(new Driver());
+                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    $img = $manager->read($image);
+                    $img = $img->resize($width, $height);
+            $img->save($location.$name_gen);
+            $save_url = $location.$name_gen;
 
 
             TeamMember::findOrFail($id)->update([

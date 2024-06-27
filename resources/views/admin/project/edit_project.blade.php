@@ -83,7 +83,8 @@ $pageTitle = 'Edit Project';
                   <input name="image" type="file" data-default-file="{{ url($project->image) }}" id="input-file-now-custom-2" class="dropify" data-height='250' />  
                   @error('image')
                   <small class="errorTxt3  red-text">{{ $message }}*</small>
-                  @enderror   
+                  @enderror  
+                  <small class="errorTxt3  grey-text">Upload image in JPG (1144 x 1300)</small>  
               </div>
 
 
@@ -105,7 +106,7 @@ $pageTitle = 'Edit Project';
     $services = getServices();
   @endphp
   @if (count($services) > 0) 
-                  <option value="{{ $project->category }}">{{ $project->category }}</option>
+                  <option value="{{ $project->category }}">{{ $project->cat->name }}</option>
   @foreach($services as $service) 
                     <option value="{{ $service->id }}">{{ $service->name }}</option>
   @endforeach
@@ -161,6 +162,7 @@ $pageTitle = 'Edit Project';
           <div class="row">
     
       <div class="col s8 collection pb-2 ml-5 mr-5">
+                  <small class="errorTxt3  grey-text">Upload image in JPG (600 x 600)</small> 
     @if ($projectImages->count() > 0) 
       <ul class="preview-container ml-1">
       @foreach ($projectImages as $projectImage)

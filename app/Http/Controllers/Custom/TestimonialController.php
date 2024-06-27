@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Custom;
 
 use App\Http\Controllers\Controller;
+use App\AppHelpers;
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
 use Intervention\Image\ImageManager;
@@ -37,19 +38,23 @@ class TestimonialController extends Controller
             'role.required' => 'Role of testifier is required',
         ]);
 
-        $entry_no = count(Testimonial::all());
-        $order = $entry_no + 1;
+        $max_no = Testimonial::max('order');
+        $order = $max_no + 1;
         
         $image = $request->file('image');
 
         if($image) {
+            $width = 86;
+            $height = 86;
+            $location = 'uploads/testimonials/';
+
             $manager = new ImageManager(new Driver());
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             $img = $manager->read($image);
-            $img = $img->resize(600, 600);
-            // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $img->save('uploads/testimonials/'.$name_gen);
-            $save_url = 'uploads/testimonials/'.$name_gen;
+            $img = $img->resize($width, $height);
+        $img->save($location.$name_gen);
+        $save_url = $location.$name_gen;
+
         } else {
             $save_url = '';
         }

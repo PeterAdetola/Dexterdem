@@ -6,7 +6,6 @@
    <!-- Navbar -->
 
     <!-- <div id="smooth-content"> -->
-
     <!-- Hero Section -->
             @include('public.index.partials.hero-section')
     <!-- Service Section -->
@@ -18,20 +17,15 @@
     <!-- About Section -->
             @include('public.index.partials.about-section')   
     <!-- Counter Section -->
-            @include('public.index.partials.counter-section')
+            @include('public.index.partials.stat-section')
     <!-- Value Section -->
-            @include('public.index.partials.value-section') 
+            @include('public.index.partials.feature-section') 
     <!-- CTA Section -->
             @include('public.index.partials.cta-section')
     <!-- Testimonial Section -->
             @include('public.index.partials.testimonial-section')
 
-   
-
-   
-
-
-    @endsection
+@endsection
     <!-- Footer -->
 
     <!-- </div> -->

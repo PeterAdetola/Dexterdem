@@ -1,5 +1,4 @@
-@php
-           
+@php           
 $projects = getProjects()->sortBy('created_at');
 $services = getServicesProj();
 @endphp
@@ -20,18 +19,18 @@ $services = getServicesProj();
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">  
-   @foreach($services as $service)                 
+    @foreach($services as $service)                 
                     <div class="tab-pane fade {{$service->order == 1 ? 'show active' : ''}}" id="service{{ $service->id }}" role="tabpanel" aria-labelledby="service{{ $service->id }}-tab" tabindex="0">
                         <div class="row">
         @php  $i = 1; @endphp
         @foreach($projects as $project) 
-        @if($project->category->name == $service->name)
+        @if($project->cat->name == $service->name)
                             <div class="col-xl-4 col-lg-4 col-md-6 col-12">                                
                                 <div class="featured-work-wrapper" data-background="{{ $project->image }}" style="cursor: pointer;" onclick="window.location='project-details.html';">                                    
                                     <div class="featured-work-inner">
                                         <div class="fetured-work-bg">                                              
                                         </div>
-                                        <a href="project-details.html" class="details-link">
+                                        <a href="{{ route('project_detailed.page', $project->id ) }}" class="details-link">
                                             <i class="las la-arrow-right"></i>
                                         </a>
                                         <div class="featured-work-info">

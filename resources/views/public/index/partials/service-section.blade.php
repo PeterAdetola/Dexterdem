@@ -24,7 +24,7 @@ $services = getServices()->sortBy('order');
                               <h2 class="accordion-header" id="heading{{$no}}">
                                 <button class="accordion-buttons collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$no}}" aria-expanded="true" aria-controls="collapse{{$no}}">
                                     <span>0{{$i++}}</span>
-                                    {{ $service->name }}                                   
+                                    {{ $service->name }}                                  
                                 </button>
                               </h2>
                               <div id="collapse{{$no}}" class="accordion-collapse collapse {{$no == 1 ? 'show' : ''}}" aria-labelledby="heading{{$no}}" data-bs-parent="#accordionExample">

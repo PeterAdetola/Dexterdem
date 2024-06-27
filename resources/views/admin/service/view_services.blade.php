@@ -138,11 +138,11 @@ Sortable.create(simpleList, {
 
   <script>
 
-
     document.getElementById("saveOrderButton").addEventListener("click", function() {
       var preloader = document.getElementById("sort-service-preloader");
       preloader.style.display = "block";
     });
+    
   </script>
 
   <script type="text/javascript">      

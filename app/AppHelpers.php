@@ -12,6 +12,21 @@ if (!function_exists('getCurrentUser')) {
     }
 }
 
+
+// Upload img 
+if (!function_exists('uploadImg')){
+    function uploadImg($location)
+    {
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $img = $manager->read($image);
+        $img->save($location.$name_gen);
+        $save_url = $location.$name_gen;
+
+        return $save_url;
+    }
+}
+
 // Extract initials from user's name
 if (!function_exists('getUserInitial')) {
     function getUserInitial()
@@ -80,6 +95,15 @@ if (!function_exists('getHeroSection')) {
      return $heroSection;
     }
  }
+// Get Inner Hero 
+if (!function_exists('getInnerHero')) {
+    function getInnerHero()
+    {
+     $innerHero = App\Models\InnerHero::all();
+     
+     return $innerHero;
+    }
+ }
 // Get About summary
 if (!function_exists('getAboutSummary')) {
     function getAboutSummary()
@@ -98,6 +122,15 @@ if (!function_exists('getServices')) {
      return $services;
     }
 }
+// Get Stats
+if (!function_exists('getStats')) {
+    function getStats()
+    {
+     $stats = App\Models\StatSection::all();
+     
+     return $stats;
+    }
+}
 // Get Services with project
 if (!function_exists('getServicesProj')) {
     function getServicesProj()
@@ -107,11 +140,38 @@ if (!function_exists('getServicesProj')) {
      return $services;
     }
 }
+// Get Team Intro
+if (!function_exists('getTeamIntro')) {
+    function getTeamIntro()
+    {
+     $teamIntro = App\Models\TeamIntro::all();
+     
+     return $teamIntro;
+    }
+}
 // Get Team Members
 if (!function_exists('getMembers')) {
     function getMembers()
     {
      $members = App\Models\TeamMember::all();
+     
+     return $members;
+    }
+}
+// Get Processes
+if (!function_exists('getProcesses')) {
+    function getProcesses()
+    {
+     $processes = App\Models\Process::all();
+     
+     return $processes;
+    }
+}
+// Get Values
+if (!function_exists('getValues')) {
+    function getValues()
+    {
+     $members = App\Models\Values::all();
      
      return $members;
     }
@@ -129,9 +189,9 @@ if (!function_exists('getProjects')) {
 if (!function_exists('getTestimonials')) {
     function getTestimonials()
     {
-     $testimonial = App\Models\Testimonial::all();
+     $testimonials = App\Models\Testimonial::all();
      
-     return $testimonial;
+     return $testimonials;
     }
 }
 // Get Clients
@@ -141,6 +201,24 @@ if (!function_exists('getClients')) {
      $clients = App\Models\Client::all();
      
      return $clients;
+    }
+}
+// Get Stats
+if (!function_exists('getStats')) {
+    function getStats()
+    {
+     $stats = App\Models\StatSection::all();
+     
+     return $stats;
+    }
+}
+// Get Features
+if (!function_exists('getFeatures')) {
+    function getFeatures()
+    {
+     $features = App\Models\Feature::all();
+     
+     return $features;
     }
 }
 // Get Contact

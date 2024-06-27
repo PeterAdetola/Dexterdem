@@ -12,6 +12,7 @@ $pageTitle = 'View Clients';
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/dropify/css/dropify.min.css') }}">
 @endsection
+
     <style>
       .embossed{
         text-shadow: 2px 2px 2px white;
@@ -57,18 +58,18 @@ $pageTitle = 'View Clients';
          <ul id="simpleList" class="collapsible">
   @php($i = 1)
   @if (count($clients) > 0)
-  @foreach($clients as $client) 
+  @foreach($clients as $client)
             <li class="hoverable">
-          <input type="hidden" name="order[]" value="{{ $client->id }}">
-               <div class="collapsible-header center" tabindex="0">
+                <input type="hidden" name="order[]" value="{{ $client->id }}">
+                <div class="collapsible-header center" tabindex="0">
                 <div class="left"><img height="50" width="110" src="{{ url($client->image) }}" /></div>
                 <h6 class="right font-weight-700 grey-text ml-10 mt-3">
                       {{ $client->name }}
                 </h6>
                 <div class="right mt-3" style="margin-left: auto;"><i class="material-icons">drag_handle</i></div>
                 </div>
-               <div class="collapsible-body">
-                <!-- <div class="divider mb-2 mt-2"></div> -->
+
+               <div class="collapsible-body">                
                   <div>
                     <a href="{{ route('edit.client', $client->id ) }}" class="lime-text text-accent-1">
                       <i class="center material-icons small-ico-bg grey-text mb-0">edit</i>
@@ -169,5 +170,4 @@ Sortable.create(simpleList, {
     <script src="{{ asset('backend/assets/vendors/dropify/js/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/scripts/form-file-uploads.js') }}"></script> 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <!-- <script src="{{ asset('backend/assets/js/scripts/extra-components-nestable.js') }}"></script>  -->
 @endsection

@@ -71,7 +71,7 @@ $pageTitle = 'View Projects';
         </div>
         <div class="card-content pt-1 pb-1">
           <h6 class="card-title truncate">{{ $project->name }}</h6>
-          <p class="truncate">{{ $project->category->name }}</p>
+          <p class="truncate">{{ $project->cat->name }}</p>
         </div>
         <div class="card-action">
             <a href="{{ route('edit.project', $project->id ) }}" class="lime-text text-accent-1">

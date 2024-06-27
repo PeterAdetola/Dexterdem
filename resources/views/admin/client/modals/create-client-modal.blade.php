@@ -19,10 +19,10 @@
 
             <div class="row">
               <div class="col s12 m12 l4 mb-2">
-                  <input name="image" type="file" id="input-file-now-custom-2" class="dropify" data-height='150' required />  
-              @error('image')
-              <small class="errorTxt3  red-text">{{ $message }}*</small>
-              @enderror
+                <input name="image" type="file" id="input-file-now-custom-2" class="dropify" data-height='150' required />  
+                @error('image')
+                <small class="errorTxt3  red-text">{{ $message }}*</small>
+                @enderror
                   <small class="errorTxt3  grey-text">Upload image in PNG (121 x 60)</small>
               </div>
 

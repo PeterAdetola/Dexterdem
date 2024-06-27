@@ -173,6 +173,6 @@ Sortable.create(simpleList, {
 @section('scripts')
     <script src="{{ asset('backend/assets/vendors/dropify/js/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/scripts/form-file-uploads.js') }}"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <!-- <script src="{{ asset('backend/assets/js/scripts/extra-components-nestable.js') }}"></script>  -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script> -->
+    <script src="{{ asset('backend/assets/js/scripts/form-elements.js') }}"></script>
 @endsection

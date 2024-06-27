@@ -111,7 +111,7 @@ class AboutController extends Controller
    public function AboutusPage()
     {
 
-        return view('frontend.aboutus');
+        return view('public.aboutus');
 
     } //End Method |-------------------
 }

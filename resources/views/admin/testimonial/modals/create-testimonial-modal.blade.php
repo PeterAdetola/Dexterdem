@@ -49,7 +49,7 @@
 
                   <div class="col s12 input-field">
                     <label for="content">Content</label>
-                    <textarea id="icon_prefix2" name="content" class="materialize-textarea" required></textarea>
+                    <textarea id="content" name="content" class="materialize-textarea"  data-length="120" required></textarea>
                     @error('short_title')
                     <small class="errorTxt3  red-text">{{ $message }}*</small>
                     @enderror
@@ -73,6 +73,9 @@
   </div>
 </div>
 <script>
+    $(document).ready(function() {
+      $('textarea#content').characterCounter();
+    });
   
     document.getElementById("createTestimonialBtn").addEventListener("click", function() {
       var preloader = document.getElementById("create-testimonial-preloader");

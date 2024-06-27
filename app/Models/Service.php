@@ -13,7 +13,8 @@ class Service extends Model
 
     public function projects()
     {
-        return $this->hasMany(Project::class, 'service_id', 'id');
+        // return $this->hasMany(Project::class, 'service_id', 'id');
+        return $this->hasMany(Project::class, 'category', 'id');
     }
 
     public function scopeWithProjects($query)

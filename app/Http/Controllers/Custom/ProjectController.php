@@ -27,6 +27,16 @@ class ProjectController extends Controller
     } //End Method
 
     /**
+     * Project page extras
+     */
+    public function ViewProjectsExtra()
+    {
+
+        return view('admin.project.project_extra');
+
+    } //End Method
+
+    /**
      * Create Project.
      */
     public function CreateProject()
@@ -53,8 +63,8 @@ class ProjectController extends Controller
         ]);
 
         
-        $max_no = ProjectImgs::max('order');
-        $order = $max_no + 1;
+        // $max_no = ProjectImgs::max('order');
+        // $order = $max_no + 1;
 
 
             // $images = $request->has('images');
@@ -68,14 +78,15 @@ class ProjectController extends Controller
                 // exit();
         
                 if($image) {
-                    $width = 1144;
-                    $height = 1300;
-                    $manager = new ImageManager(new Driver());
-                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                    $img = $manager->read($image);
-                    $img = $img->resize($width, $height);
-                $img->save('uploads/projects/'.$name_gen);
-                $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                 }
 
                 $project = Project::create([
@@ -91,14 +102,15 @@ class ProjectController extends Controller
                 foreach( $images as $image) {
 
                     if($image) {
-                    $width = 600;
-                    $height = 600;
+                        $width = 600;
+                        $height = 600;
+                        $location = 'uploads/projects/details/';
                         $manager = new ImageManager(new Driver());
                         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                         $img = $manager->read($image);
                         $img = $img->resize($width, $height);
-                        $img->save('uploads/projects/details/'.$name_gen);
-                        $save_urls = 'uploads/projects/details/'.$name_gen;
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                     }
                 
                     ProjectImgs::insert([
@@ -120,18 +132,18 @@ class ProjectController extends Controller
                 // exit();
         
                 if($image) {
-                    $width = 1144;
-                    $height = 1300;
-                    $manager = new ImageManager(new Driver());
-                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                    $img = $manager->read($image);
-                    $img = $img->resize($width, $height);
-                $img->save('uploads/projects/'.$name_gen);
-                $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                 }
 
                 $project = Project::create([
-                    'order' => $order,
                     'image' => $save_url,
                     'name' => $request->name,
                     'category' => $request->category,
@@ -143,15 +155,18 @@ class ProjectController extends Controller
                 foreach( $images as $image) {
 
                     if($image) {
-                    $width = 600;
-                    $height = 600;
+                        $width = 600;
+                        $height = 600;
+                        $location = 'uploads/projects/details/';
                         $manager = new ImageManager(new Driver());
                         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                         $img = $manager->read($image);
                         $img = $img->resize($width, $height);
-                        $img->save('uploads/projects/details/'.$name_gen);
-                        $save_urls = 'uploads/projects/details/'.$name_gen;
-                    }
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
+                    }        
+                   
+
                 
                      ProjectImgs::insert([
                         'project_id' => $project->id,
@@ -173,18 +188,18 @@ class ProjectController extends Controller
                 // exit();
         
                 if($image) {
-                    $width = 1144;
-                    $height = 1300;
-                    $manager = new ImageManager(new Driver());
-                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                    $img = $manager->read($image);
-                    $img = $img->resize($width, $height);
-                $img->save('uploads/projects/'.$name_gen);
-                $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                 }
 
                 $project = Project::create([
-                    'order' => $order,
                     'image' => $save_url,
                     'name' => $request->name,
                     'category' => $request->category,
@@ -205,12 +220,15 @@ class ProjectController extends Controller
                     // exit();
         
                 if($image) {
-                $manager = new ImageManager(new Driver());
-                $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                $img = $manager->read($image);
-                $img = $img->resize(1600, 1128);
-                $img->save('uploads/projects/'.$name_gen);
-                $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                 }
 
                 $project = Project::create([
@@ -279,18 +297,19 @@ class ProjectController extends Controller
         } catch (Exception $e) {
         Log::error("Error deleting old image: " . $e->getMessage());            
         }
-
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            // $img = $img->resize(200, 140);
-            // $img->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $img->save('uploads/projects/details/'.$name_gen);
-            $save_url = 'uploads/projects/details/'.$name_gen;
+                        $width = 600;
+                        $height = 600;
+                        $location = 'uploads/projects/details/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
 
 
             ProjectImgs::findOrFail($id)->update([
-                'image' => $save_url,
+                'image' => $save_urls,
             ]);
 
         $notification = array(
@@ -398,14 +417,15 @@ class ProjectController extends Controller
         $image = $request->file('image');
 
         if($image) {
-            $width = 600;
-            $height = 600;
-                $manager = new ImageManager(new Driver());
-                $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                $img = $manager->read($image);
-                $img = $img->resize($width, $height);
-            $img->save('uploads/projects/details/'.$name_gen);
-            $save_url = 'uploads/projects/details/'.$name_gen;
+                    $width = 600;
+                    $height = 600;
+                    $location = 'uploads/projects/details/';
+                    $manager = new ImageManager(new Driver());
+                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    $img = $manager->read($image);
+                    $img = $img->resize($width, $height);
+                    $img->save($location.$name_gen);
+                    $save_urls = $location.$name_gen;
         }
 
             ProjectImgs::insert([
@@ -445,24 +465,29 @@ class ProjectController extends Controller
         } catch (Exception $e) {
         Log::error("Error deleting old image: " . $e->getMessage());            
         }
-
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $sizedImg = $img->resize(200, 140);
-            // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $sizedImg->save('uploads/projects/'.$name_gen);
-            $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
 
 
                 foreach( $images as $image) {
 
                     if($image) {
-                        $manager = new ImageManager(new Driver());
-                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                        $img = $manager->read($image);
-                        $img->save('uploads/projects/details/'.$name_gen);
-                        $save_urls = 'uploads/projects/details/'.$name_gen;
+                    $width = 600;
+                    $height = 600;
+                    $location = 'uploads/projects/details/';
+                    $manager = new ImageManager(new Driver());
+                    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    $img = $manager->read($image);
+                    $img = $img->resize($width, $height);
+                    $img->save($location.$name_gen);
+                    $save_urls = $location.$name_gen;
                     }
                 
                     ProjectImgs::insert([
@@ -501,14 +526,15 @@ class ProjectController extends Controller
         } catch (Exception $e) {
         Log::error("Error deleting old image: " . $e->getMessage());      
         }
-
-            $manager = new ImageManager(new Driver());
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $sizedImg = $img->resize(200, 140);
-            // $sizedImg->toJpeg(80)->save('upload/hero_images/'.$name_gen);
-            $sizedImg->save('uploads/projects/'.$name_gen);
-            $save_url = 'uploads/projects/'.$name_gen;
+                        $width = 1144;
+                        $height = 1300;
+                        $location = 'uploads/projects/';
+                        $manager = new ImageManager(new Driver());
+                        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                        $img = $manager->read($image);
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
 
 
             Project::findOrFail($id)->update([
@@ -517,7 +543,7 @@ class ProjectController extends Controller
                 'location' => $request->location,
                 'year' => $request->year,
                 'details' => $request->details,
-                'image' => $save_url,
+                'image' => $save_urls,
             ]);
 
         $notification = array(
@@ -541,11 +567,15 @@ class ProjectController extends Controller
                 foreach( $images as $image) {
 
                     if($image) {
+                        $width = 600;
+                        $height = 600;
+                        $location = 'uploads/projects/details/';
                         $manager = new ImageManager(new Driver());
                         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                         $img = $manager->read($image);
-                        $img->save('uploads/projects/details/'.$name_gen);
-                        $save_urls = 'uploads/projects/details/'.$name_gen;
+                        $img = $img->resize($width, $height);
+                        $img->save($location.$name_gen);
+                        $save_urls = $location.$name_gen;
                     }
                 
                     ProjectImgs::insert([
@@ -620,7 +650,7 @@ class ProjectController extends Controller
    public function ProjectPage()
     {
 
-        return view('frontend.project.projects');
+        return view('public.projects');
 
     } //End Method |-------------------
 
@@ -635,10 +665,11 @@ class ProjectController extends Controller
         $projectImages = $project->images->sortBy('order');
 
 
-        $previousProject = Project::where('id', '<', $project->id)->where('details', '!=', '')->orderBy('id', 'desc')->first();
-        $nextProject = Project::where('id', '>', $project->id)->where('details', '!=', '')->orderBy('id', 'asc')->first();
+        // $previousProject = Project::where('id', '<', $project->id)->where('details', '!=', '')->orderBy('id', 'desc')->first();
+        // $nextProject = Project::where('id', '>', $project->id)->where('details', '!=', '')->orderBy('id', 'asc')->first();
 
-        return view('frontend.project.project_detailed', compact('project', 'projectImages', 'previousProject', 'nextProject'));
+        // return view('public.project_detailed', compact('project', 'projectImages', 'previousProject', 'nextProject'));
+        return view('public.project_detailed', compact('project', 'projectImages'));
 
     } //End Method |-------------------
 

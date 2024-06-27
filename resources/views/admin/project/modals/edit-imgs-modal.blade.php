@@ -22,7 +22,8 @@
                   <input name="image" type="file" id="input-file-now-custom-2" data-default-file="{{ url($projectImage->image) }}" class="dropify" data-height='200' />  
               @error('image')
               <small class="errorTxt3  red-text">{{ $message }}*</small>
-              @enderror   
+              @enderror 
+                  <small class="errorTxt3  grey-text">Upload image in JPG (600 x 600)</small>   
               </div> 
       <div class="row">
         <div class="input-field col s12">

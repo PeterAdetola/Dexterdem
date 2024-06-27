@@ -46,12 +46,12 @@ $route = Route::current()->getName()
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/custom/custom.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/custom/toast.css') }}" >
     <!-- END: Custom CSS-->
-<style type="text/css">
-  form:invalid button {
-   pointer-events: none;
-   opacity: 0.5;
-}
-</style>
+    <style type="text/css">
+        form:invalid button {
+         pointer-events: none;
+         opacity: 0.5;
+      }
+    </style>
   </head>
   <!-- END: Head-->
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions 2-columns {{ ($route == 'dashboard')? 'menu-collapse' : '' }}  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
@@ -65,7 +65,7 @@ $route = Route::current()->getName()
 
     <!-- BEGIN: Page Main-->
     
-    @yield('admin')   
+    @yield('admin')  
 
 
     

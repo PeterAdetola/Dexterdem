@@ -17,7 +17,7 @@ class Project extends Model
         return $this->hasMany(ProjectImgs::class);
     }
 
-    public function category(){
-        return $this->belongsTo(Service::class,'service_id', 'id');
+    public function cat(){
+        return $this->belongsTo(Service::class,'category', 'id');
     }
 }

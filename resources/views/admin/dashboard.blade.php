@@ -1,7 +1,6 @@
  @extends('admin.admin_master')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/dropify/css/dropify.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/jquery.nestable/nestable.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/hover-effects/media-hover-effects.css') }}">
     <style>
       .embossed{
@@ -102,19 +101,19 @@
     $noTagline = empty($heroSection->tagline)
     @endphp
     @if($noTagline)
-              <p class="pt-2 pr-2 ">Design your Dream House </p>
-              <div class="row mt-2" style="padding: 1em;">
-                <a href="#{{ $noTagline ? 'add_tagline-modal' : 'edit_tagline-modal' }}" class="modal-trigger">
-                  <div class="chip"> Add Tagline </div>
-                </a>
-              </div>
+            <p class="pt-2 pr-2 ">Design your Dream House </p>
+            <div class="row mt-2" style="padding: 1em;">
+              <a href="#{{ $noTagline ? 'add_tagline-modal' : 'edit_tagline-modal' }}" class="modal-trigger">
+                <div class="chip"> Add Tagline </div>
+              </a>
+            </div>
     @else
-              <p class="pt-2 pr-2 ">{{ $heroSection->tagline }}</p>
-              <div class="row mt-2" style="padding: 1em;">
-                <a href="#{{ $noTagline ? 'add_tagline-modal' : 'edit_tagline-modal' }}" class="modal-trigger">
-                  <div class="chip"> Edit Tagline </div>
-                </a>
-              </div>
+            <p class="pt-2 pr-2 ">{{ $heroSection->tagline }}</p>
+            <div class="row mt-2" style="padding: 1em;">
+              <a href="#{{ $noTagline ? 'add_tagline-modal' : 'edit_tagline-modal' }}" class="modal-trigger">
+                <div class="chip"> Edit Tagline </div>
+              </a>
+            </div>
     @endif
 
     @include('admin.hero.hero_tagline-modal')
@@ -190,9 +189,9 @@
 
 
     @php
-    $aboutSum = getAboutSummary()->first();
-    $noAboutSum = empty($aboutSum->summary);
-    $noAboutImg = empty($aboutSum->image);
+      $aboutSum = getAboutSummary()->first();
+      $noAboutSum = empty($aboutSum->summary);
+      $noAboutImg = empty($aboutSum->image);
     @endphp
 
     <div class="row mt-1">
@@ -244,6 +243,8 @@
     $projects = getProjects();
     $testimonials = getTestimonials();
     $clients = getClients();
+    $stats = getStats();
+    $features = getFeatures();
     @endphp
     <div class="row">      
       <div class="col s12 m6 card-width">
@@ -310,15 +311,15 @@
             </div>
           </div>
         </div>
-           
+
       <div class="col s12 m6 card-width">
         <div class="card border-radius-6">
           <div class="card-content center-align">
-            <i class="material-icons grey-text mb-5">highlight</i>
-            <h4 class="m-0"><b>{{ count($services) }}</b></h4>
-            <p>{{ (count($services) > 1)? 'Services' : 'Service' }}</p>
+            <i class="material-icons grey-text mb-5">insert_chart</i>
+            <h4 class="m-0"><b>{{ count($stats) }}</b></h4>
+            <p>{{ (count($stats) > 1)? 'Stats' : 'Stat' }}</p>
             <p class="mt-3">
-              <a href="{{ route('view.services') }}" class="red-text"><i class="material-icons vertical-align-middle small-ico-bg">arrow_forward</i></a>
+              <a href="{{ route('view.stats') }}" class="red-text"><i class="material-icons vertical-align-middle small-ico-bg">arrow_forward</i></a>
             </p>
           </div>
         </div>
@@ -327,11 +328,11 @@
       <div class="col s12 m6 card-width">
         <div class="card border-radius-6">
           <div class="card-content center-align">
-            <i class="material-icons grey-text mb-5">business_center</i>
-            <h4 class="m-0"><b>{{ count($projects) }}</b></h4>
-            <p>{{ (count($projects) > 1)? 'Projects' : 'Project' }}</p>
+            <i class="material-icons grey-text mb-5">check_box</i>
+            <h4 class="m-0"><b>{{ count($features) }}</b></h4>
+            <p>{{ (count($features) > 1)? 'Features' : 'Feature' }}</p>
             <p class="mt-3">
-              <a href="{{ route('view.projects') }}" class="red-text"><i class="material-icons vertical-align-middle small-ico-bg">arrow_forward</i></a>
+              <a href="{{ route('view.features') }}" class="red-text"><i class="material-icons vertical-align-middle small-ico-bg">arrow_forward</i></a>
             </p>
           </div>
         </div>
@@ -385,7 +386,7 @@
 
         &nbsp;</span>
           </h6>
-          <div class="collection border" style="padding: 2em 4em; margin-top: -1em; z-index: 0;">
+          <div class="collection border" style="padding: 1em 2em; margin-top: -1em; z-index: 0;">
           <h6 class=" m-0"><span>{!! $contact->email !!}</span></h6>
         </div>
         </div>
